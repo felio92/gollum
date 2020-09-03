@@ -1190,6 +1190,7 @@ Gem::Specification.new do |s|
     lib/gollum/public/gollum/stylesheets/spinner.scss
     lib/gollum/public/gollum/stylesheets/tables.scss
     lib/gollum/public/gollum/stylesheets/template.scss.erb
+    lib/gollum/public/gollum/stylesheets/gollum.css
     lib/gollum/templates/commit.mustache
     lib/gollum/templates/compare.mustache
     lib/gollum/templates/create.mustache
@@ -1208,6 +1209,7 @@ Gem::Specification.new do |s|
     lib/gollum/templates/pagination.mustache
     lib/gollum/templates/search.mustache
     lib/gollum/templates/searchbar.mustache
+    lib/gollum/templates/user.mustache
     lib/gollum/templates/wiki_content.mustache
     lib/gollum/uri_encode_component.rb
     lib/gollum/views/commit.rb

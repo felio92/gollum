@@ -5,6 +5,7 @@
   <meta name="MobileOptimized" content="width">
   <meta name="HandheldFriendly" content="true">
   <meta name="viewport" content="width=device-width">
+  <link rel="icon" type="image/png" href="{{base_url}}/Home/favicon.png" sizes="96x96">  
   {{#sprockets_stylesheet_tag}}app{{/sprockets_stylesheet_tag}}
   {{#sprockets_stylesheet_tag}}print print{{/sprockets_stylesheet_tag}}
 
@@ -58,7 +59,47 @@
   <title>{{title}}</title>
 </head>
 <body>
+<div id="disclaimer" style="display:none;">
+  <div id="disclaimer-text">
+    <p><b>Disclaimer:</b> The explanation provided on this website (Hotmaps Wiki) are indicative and for research purposes only. No responsibility is taken for the accuracy of the provided information, explanations and figures or for using them for unintended purposes.</p>
+    <p><b>Data privacy:</b> By clicking OK below, you accept that this website may use cookies.</p>
+  <button id="disclaimer-btn" type="button">Ok</button>
+  </div>
+  <div id="disclaimer-overlay">
+  </div>
+</div>
+<script>
+  function close_disclaimer () {
+    document.getElementById("disclaimer").style.display = "none";
+    document.cookie = "disclaimer-closed"
+  }
+  
+  function init () { 
+    // show disclaimer if disclaimer-closed cookie has not been set
+    if (!document.cookie.includes("disclaimer-closed")) {
+      document.getElementById("disclaimer").style.display = "";  
+    }
+    
+    document.getElementById("disclaimer-btn").addEventListener("click", close_disclaimer);
+  }
+  var readyStateCheckInterval = setInterval(function() {
+    if (document.readyState === "complete") {
+      clearInterval(readyStateCheckInterval);
+      init();
+    }
+  }, 10);  
+</script>
+<div id="header">
+  <a href="https://www.hotmaps-project.eu" target="_blank" alt="Home">
+    <img src="https://www.hotmaps-project.eu/wp-content/uploads/2017/03/logo_footer.svg">
+  </a>
+  <a id="toolbox-link" href="https://www.hotmaps.hevs.ch/" target="_blank" alt="Hotmaps Toolbox">
+    <img src="{{base_url}}/Home/gears.svg">
+  </a>
+  <img id="eu-logo" src="https://www.hotmaps-project.eu/wp-content/themes/JointsWP/assets/images/flag_europe.svg">
+  {{< user}}
 {{< user}}
+</div>
 <div class="container-lg clearfix">
 {{{yield}}}
 </div>
